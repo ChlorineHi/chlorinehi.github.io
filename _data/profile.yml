@@ -38,11 +38,13 @@ education:
     B.Eng. in Software Engineering
   date: Sep 2023 - Jun 2027
 
-# experience:
-# - name: NUS
-#   logo: /assets/images/badges/nus_logo.png
-#   position: SOC Summer Workshop 2025
-#   date: May 2025 - Jul 2025
+experience:
+- name: ListenSpeakStar
+  # logo: /assets/images/badges/
+  position: >-
+    Multi-Agent Collaborative Intelligent Training System for English Listening and Speaking <br>
+    Software Copyright Registration No. 2025SR2109214
+  date: May 2025 - Jan 2026
 
 awards:
 - name: National Third Prize, China Students Service Outsourcing Innovation & Entrepreneurship Competition, 15th Ed.
