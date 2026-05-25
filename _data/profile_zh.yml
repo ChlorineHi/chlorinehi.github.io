@@ -1,0 +1,42 @@
+primary_name: "王景煊"
+secondary_name: "Jingxuan Wang"
+navbar_name: "王景煊"
+
+positions:
+- name: 软件工程 本科在读
+- name: 北京邮电大学
+  # logo: /assets/images/badges/bupt_logo.png
+
+email: "wasd2004121600@bupt.edu.cn"
+github: chlorinehi
+
+short_bio_text_justify: false
+short_bio: >-
+  <p>
+    我是北京邮电大学软件工程专业的本科生，预计2027年毕业。
+  </p>
+  <p>
+    我的研究方向集中于 <strong>AI 药物发现</strong>、<strong>精准医疗</strong>、<strong>医疗健康多模态学习</strong> 以及 <strong>单细胞与组学数据分析</strong>。目前主要从事生成对抗网络在空间转录组学分析中的应用，以及对比学习在单细胞组学数据聚类中的研究。
+  </p>
+
+portrait_url: /assets/images/photos/portrait.jpg
+
+education:
+- name: 北京邮电大学
+  position: >-
+    软件工程 本科
+  date: 2023年9月 - 2027年6月
+
+awards:
+- name: 第十五届中国大学生服务外包创新创业大赛 全国三等奖
+  date: 2024
+- name: 第六届全球校园人工智能算法精英大赛 北京赛区二等奖（AI+医学赛道）
+  date: 2024
+- name: 第十六届中国大学生服务外包创新创业大赛 北京赛区三等奖
+  date: 2025
+- name: 第十一届全国大学生统计建模大赛 北京赛区一等奖
+  date: 2025
+- name: 第十八届中国大学生计算机设计大赛 北京赛区二等奖
+  date: 2025
+- name: 校级三等奖学金
+  date: 2025
