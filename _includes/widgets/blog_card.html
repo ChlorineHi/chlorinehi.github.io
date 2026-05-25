@@ -36,9 +36,9 @@
             </div>
         </div>
         {% if item.list_image %}
-        <div class="col-4 d-none d-md-flex align-items-center">
-            <a href="{{ item.url | relative_url }}">
-                <img src="{{ item.list_image | relative_url }}" class="img-fluid rounded" alt="{{ item.title }}">
+        <div class="col-4 d-none d-md-flex pr-0 pl-2">
+            <a href="{{ item.url | relative_url }}" class="flex-grow-1">
+                <img src="{{ item.list_image | relative_url }}" class="rounded w-100 h-100" alt="{{ item.title }}" style="object-fit: cover;">
             </a>
         </div>
         {% endif %}
