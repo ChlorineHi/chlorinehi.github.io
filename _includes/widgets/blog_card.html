@@ -5,7 +5,7 @@
 
 <div class="border-bottom border-gray p-3 {% if hide_bottom_border %}border-0{% endif %}">
     <div class="row">
-        <div class="col-12">
+        <div class="{% if item.list_image %}col-12 col-md-8{% else %}col-12{% endif %}">
             <h5 class="mb-2">
                 <a href="{{ item.url | relative_url }}" class="text-dark text-decoration-none">
                     {{ item.title }}
@@ -27,7 +27,7 @@
                     {{ item.excerpt | strip_html | truncate: 500 }}
                 {% else %}
                     {{ item.content | strip_html | truncate: 500 }}
-                {% endif %} 
+                {% endif %}
             </div>
             <div class="mt-2">
                 <a href="{{ item.url | relative_url }}">
@@ -35,5 +35,12 @@
                 </a>
             </div>
         </div>
+        {% if item.list_image %}
+        <div class="col-4 d-none d-md-flex align-items-center">
+            <a href="{{ item.url | relative_url }}">
+                <img src="{{ item.list_image | relative_url }}" class="img-fluid rounded" alt="{{ item.title }}">
+            </a>
+        </div>
+        {% endif %}
     </div>
 </div>

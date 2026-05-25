@@ -3,6 +3,7 @@ layout: blog_post
 title: "CIMR Winter Camp: Exploring the Frontiers of Alzheimer's Disease Research"
 date: 2026-02-20 00:01:00 +0800
 tags: [CIMR, Alzheimer's Disease, Medical Research, Winter Camp]
+list_image: /assets/images/posts/cimr-winter-camp/thumbnail.jpg
 ---
 
 This winter, the most meaningful journey I undertook was participating in the Winter Training Program at the **CIMR Medical Science Innovation Center** of Capital Medical University. Stepping away from textbook fundamentals and conventional classroom learning, I joined outstanding medical students from across the country to focus on cutting-edge Alzheimer's disease (AD) research — engaging in paper reading, group discussions, and research presentations that immersed us in the frontiers of neuroscience. This short but intensive academic experience not only refreshed my understanding of AD research but also revealed the true spirit and power of medical science through the collision of ideas with my peers.
