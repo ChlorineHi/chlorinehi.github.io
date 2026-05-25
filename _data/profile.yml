@@ -37,6 +37,11 @@ education:
   position: >-
     B.Eng. in Software Engineering
   date: Sep 2023 - Jun 2027
+- name: National University of Singapore
+  # logo: /assets/images/badges/nus_logo.png
+  position: >-
+    Non-Graduating Non-Exchange Programme (NGNE), School of Computing
+  date: Aug 2026 - May 2027
 
 experience:
 - name: ListenSpeakStar
