@@ -13,6 +13,11 @@
                 </li>
                 {% endfor %}
                 <li class="nav-item">
+                    <a class="nav-link" href="#" id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
                     {% if page.lang == "zh" %}
                     <a class="nav-link" href="{{ '/' | relative_url }}"><i class="fas fa-language"></i> EN</a>
                     {% else %}
