@@ -60,6 +60,10 @@
                         </a>
                         {% endif %}
 
+                        <a class="px-1 no-break" href="mailto:{{ site.data.profile_zh.email | encode_email }}">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+
                         {% if site.data.profile_zh.github %}
                         <a class="px-1 no-break" target="_blank" href="https://github.com/{{ site.data.profile_zh.github }}">
                             <i class="fab fa-github"></i>
