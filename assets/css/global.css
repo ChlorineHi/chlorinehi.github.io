@@ -42,6 +42,18 @@ h1, h2, h3, h4, h5, h6,
     font-weight: 400;
 }
 
+.text-profile-slogan {
+    font-family: "Comfortaa", "Lato", sans-serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: #5a6472;
+}
+
+.text-profile-slogan strong {
+    font-weight: 700;
+}
+
 .navbar {
     background-color: rgba(255, 255, 255, 0.6) !important;
     backdrop-filter: blur(16px);

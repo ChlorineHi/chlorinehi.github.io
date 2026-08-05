@@ -31,6 +31,14 @@
                     </div>
                 </div>
 
+                {% if site.data.profile_zh.slogan %}
+                <div class="row pt-2">
+                    <div class="col text-center text-profile-slogan" style="font-size: 0.8rem;">
+                        {{ site.data.profile_zh.slogan }}
+                    </div>
+                </div>
+                {% endif %}
+
                 <div class="row small">
                     <div class="col text-center">
                         <a class="email-text" href="mailto:{{ site.data.profile_zh.email | encode_email }}">
