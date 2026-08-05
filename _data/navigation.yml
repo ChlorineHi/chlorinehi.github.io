@@ -8,3 +8,5 @@ pages:
   url: /blog
 - name: Showcase
   url: /showcase
+- name: CV
+  url: /cv
