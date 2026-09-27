@@ -1,30 +1,26 @@
-<nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
-    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
-        <a class="navbar-brand"><strong>{% if page.lang == "zh" %}{{site.data.profile_zh.navbar_name}}{% else %}{{site.data.profile.navbar_name}}{% endif %}</strong></a>
-        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-map"></i> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                {% for item in site.data.navigation.pages %}
-                <li class="nav-item {% if item.name == page.navbar_title or include.active_page == item.name %}active{% endif %}">
-                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}</a>
-                </li>
-                {% endfor %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
-                        <i id="theme-icon" class="fas fa-moon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    {% if page.lang == "zh" %}
-                    <a class="nav-link" href="{{ '/' | relative_url }}"><i class="fas fa-language"></i> EN</a>
-                    {% else %}
-                    <a class="nav-link" href="{{ '/zh/' | relative_url }}"><i class="fas fa-language"></i> 中</a>
-                    {% endif %}
-                </li>
-            </ul>
+<header class="site-header">
+    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %} header-inner">
+        <div class="navleft text">
+            <a href="{{ '/' | relative_url }}">{% if page.lang == "zh" %}{{site.data.profile_zh.navbar_name}}{% else %}{{site.data.profile.navbar_name}}{% endif %}</a>
+        </div>
+        <div class="navright-group">
+            {% for item in site.data.navigation.pages %}
+            <div class="navright text {% if item.name == page.navbar_title or include.active_page == item.name %}active{% endif %}">
+                <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+            </div>
+            {% endfor %}
+            <div class="navright text">
+                <a href="#" id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </a>
+            </div>
+            <div class="navright text">
+                {% if page.lang == "zh" %}
+                <a href="{{ '/' | relative_url }}"><i class="fas fa-language"></i> EN</a>
+                {% else %}
+                <a href="{{ '/zh/' | relative_url }}"><i class="fas fa-language"></i> 中</a>
+                {% endif %}
+            </div>
         </div>
     </div>
-</nav>
+</header>

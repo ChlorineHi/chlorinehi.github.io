@@ -5,98 +5,107 @@ navbar_title: 主页
 lang: zh
 ---
 
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini_zh.html %}
-    </div>
-    <div class="col-lg-9 col-md-8">
-
-        <div class="mt-3 d-md-none"></div>
-        <div class="row">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <div class="row px-3 pt-3">
-                            <div class="col h3">关于我</div>
-                        </div>
-                        <div class="row p-3">
-                            <div class="col">
-                                <div class="text-profile-bio mt-0">
-                                    {{ site.data.profile_zh.short_bio }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div id="header">
+    <div class="row align-items-end">
+        <div class="col-md-4 col-lg-3 text-center text-md-left">
+            {% if site.data.profile_zh.portrait_url %}
+            <img src="{{ site.data.profile_zh.portrait_url | relative_url }}" class="img-fluid" id="portrait" alt="{{ site.data.profile_zh.primary_name }}">
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-lg-9">
+            <div id="header-text-name">{{ site.data.profile_zh.primary_name }}</div>
+            {% for position in site.data.profile_zh.positions %}
+            <div class="header-text-desc">{{ position.name }}</div>
+            {% endfor %}
+            <div class="header-text-desc mt-2">
+                <strong>研究方向：</strong>AI 药物发现 · 精准医疗 · 医疗健康多模态学习 · 单细胞与组学 · 空间转录组学
+            </div>
+            <br>
+            <div class="header-text-email">
+                <a href="mailto:{{ site.data.profile_zh.email | encode_email }}">{{ site.data.profile_zh.email }}</a>
+            </div>
+            <div class="header-links mt-2">
+                <a href="https://github.com/{{ site.data.profile_zh.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="{{ '/cv' | relative_url }}"><i class="fas fa-file-alt"></i> 简历</a>
+                <a href="{{ '/publications' | relative_url }}"><i class="fas fa-book"></i> 论文</a>
             </div>
         </div>
-
-        <div class="row mt-3">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <div class="row" data-masonry='{"percentPosition": true }'>
-                            {% if site.data.profile_zh.education %}
-                            <div class="col-lg-6">
-                                <div class="mx-2 my-1">
-                                    <h6>教育背景</h6>
-                                    <ul class="list-unstyled mb-1">
-                                        {% for item in site.data.profile_zh.education %}
-                                        <li class="media mb-1">
-                                            {% if item.logo %}
-                                            <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" style="width: 18px;" class="mr-1 mt-1">
-                                            {% endif %}
-                                            <div class="media-body">
-                                                <div>{{ item.name }}</div>
-                                                <div class="small d-flex">
-                                                    <div>{{ item.position }}</div>
-                                                    <div class="mt-auto ml-auto no-break"><em>{{ item.date }}</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endif %}
-
-                            {% if site.data.profile_zh.awards %}
-                            <div class="col-lg-6">
-                                <div class="mx-2 my-1">
-                                    <h6>荣誉与奖项</h6>
-                                    <ul class="list small pl-3 mb-1">
-                                        {% for item in site.data.profile_zh.awards %}
-                                        <li>
-                                            <div class="d-flex">
-                                                <div>{{ item.name }}</div>
-                                                <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
-                                            </div>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> 代表性论文'
-        %}
-        {% endif %}
     </div>
 </div>
+
+<div class="row vspace-top">
+    <div class="col">
+        <h1>关于我</h1>
+        <div class="text-profile-bio mt-2">
+            {{ site.data.profile_zh.short_bio }}
+        </div>
+    </div>
+</div>
+
+{% if site.data.profile_zh.education %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>教育背景</h1>
+        {% for item in site.data.profile_zh.education %}
+        <div class="d-flex mt-2">
+            <div>
+                <strong>{{ item.name }}</strong>{% if item.position %} — {{ item.position }}{% endif %}
+            </div>
+            <div class="ml-auto no-break text-muted pl-3">{{ item.date }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% if site.data.profile_zh.awards %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>荣誉与奖项</h1>
+        <ul class="list-unstyled mt-2 mb-0">
+            {% for item in site.data.profile_zh.awards %}
+            <li class="d-flex vspace-top-news">
+                <div>{{ item.name }}</div>
+                <div class="ml-auto no-break text-muted pl-3">{{ item.date }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+{% if site.data.display.homepage.show_news %}
+{% assign news_items = site.news | sort: "date" | reverse | slice: 0, site.data.display.homepage.num_news %}
+{% if news_items.size > 0 %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>最新动态</h1>
+        <ul class="list-unstyled mt-2 mb-0">
+            {% for item in news_items %}
+            <li class="d-flex vspace-top-news">
+                <div class="news-date no-break pr-3" style="min-width: 5.5rem;">{{ item.date | date: "%Y-%m" }}</div>
+                <div>{{ item.title }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% if site.data.display.homepage.show_selected_publications %}
+{% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+{% if pubs.size > 0 %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>代表性论文</h1>
+        <div class="text-muted small mt-2">
+            完整列表请见 <a href="{{ '/publications' | relative_url }}">论文页面</a>。
+        </div>
+    </div>
+</div>
+{% for item in pubs %}
+{% include widgets/publication_paper.html item=item %}
+{% endfor %}
+{% endif %}
+{% endif %}

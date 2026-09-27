@@ -4,36 +4,94 @@ title : Homepage
 navbar_title: Home
 ---
 
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini.html %}
-    </div>
-    <div class="col-lg-9 col-md-8">
-
-        {% include widgets/profile_card_bio_only.html %}
-
-        <!-- Debugging widgets -->
-        {% include widgets/debug_repo_name.html %}
-        {% include widgets/debug_url.html %}
-
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> Selected Publications'
-        %}
-        {% endif %}
+<div id="header">
+    <div class="row align-items-end">
+        <div class="col-md-4 col-lg-3 text-center text-md-left">
+            {% if site.data.profile.portrait_url %}
+            <img src="{{ site.data.profile.portrait_url | relative_url }}" class="img-fluid" id="portrait" alt="{{ site.data.profile.primary_name }}">
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-lg-9">
+            <div id="header-text-name">{{ site.data.profile.primary_name }}</div>
+            {% for position in site.data.profile.positions %}
+            <div class="header-text-desc">{{ position.name }}</div>
+            {% endfor %}
+            {% if site.data.profile.slogan %}
+            <div class="header-text-desc text-profile-slogan" style="font-size: 1rem;">{{ site.data.profile.slogan }}</div>
+            {% endif %}
+            <div class="header-text-desc mt-2">
+                <strong>Research interests:</strong> AI for Drug Discovery · Precision Medicine · Multimodal Learning in Healthcare · Single-cell &amp; Omics · Spatial Transcriptomics
+            </div>
+            <br>
+            <div class="header-text-email">
+                <a href="mailto:{{ site.data.profile.email | encode_email }}">{{ site.data.profile.email }}</a>
+            </div>
+            <div class="header-links mt-2">
+                <a href="https://github.com/{{ site.data.profile.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="{{ '/cv' | relative_url }}"><i class="fas fa-file-alt"></i> CV</a>
+                <a href="{{ '/publications' | relative_url }}"><i class="fas fa-book"></i> Publications</a>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="row vspace-top">
+    <div class="col">
+        <h1>About Me</h1>
+        <div class="text-profile-bio mt-2">
+            {{ site.data.profile.short_bio }}
+        </div>
+    </div>
+</div>
+
+{% if site.data.profile.education %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>Education</h1>
+        {% for item in site.data.profile.education %}
+        <div class="d-flex mt-2">
+            <div>
+                <strong>{{ item.name }}</strong>{% if item.position %} — {{ item.position }}{% endif %}
+            </div>
+            <div class="ml-auto no-break text-muted pl-3">{{ item.date }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% if site.data.display.homepage.show_news %}
+{% assign news_items = site.news | sort: "date" | reverse | slice: 0, site.data.display.homepage.num_news %}
+{% if news_items.size > 0 %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>News</h1>
+        <ul class="list-unstyled mt-2 mb-0">
+            {% for item in news_items %}
+            <li class="d-flex vspace-top-news">
+                <div class="news-date no-break pr-3" style="min-width: 5.5rem;">{{ item.date | date: "%b %Y" }}</div>
+                <div>{{ item.title }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% if site.data.display.homepage.show_selected_publications %}
+{% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+{% if pubs.size > 0 %}
+<div class="row vspace-top">
+    <div class="col">
+        <h1>Selected Publications</h1>
+        <div class="text-muted small mt-2">
+            For the full list, please see the <a href="{{ '/publications' | relative_url }}">Publications</a> page.
+        </div>
+    </div>
+</div>
+{% for item in pubs %}
+{% include widgets/publication_paper.html item=item %}
+{% endfor %}
+{% endif %}
+{% endif %}

@@ -1,0 +1,31 @@
+{% assign item = include.item %}
+<div class="row vspace-top">
+    <div class="col-sm-3 col-xl-3">
+        {%- if item.cover -%}
+        <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy img-fluid rounded-sm" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
+        {%- else -%}
+        <svg class="bubble-visual-hash w-100 rounded-sm" data-bubble-visual-hash="{{ item.id }}" viewBox="0 0 300 200"></svg>
+        {%- endif -%}
+    </div>
+    <div class="col">
+        <div class="paper-title">{{ item.title }}</div>
+        <div class="paper-desc">
+            {{ item.pub_pre }}<i>{{ item.pub }}</i>{{ item.pub_post }}{% if item.pub_date %}, {{ item.pub_date }}{% endif %} {{ item.pub_last }}
+        </div>
+        <div class="paper-author">{% include widgets/author_list.html authors=item.authors %}</div>
+        {% if include.show_abstract and item.abstract %}
+        <div class="paper-abstract mt-1">{{ item.abstract }}</div>
+        {% endif %}
+        {% if item.links %}
+        <div class="paper-links">
+            {% for link in item.links %}
+            {% if link[1].url %}
+            <a target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
+            {% else %}
+            <a target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
