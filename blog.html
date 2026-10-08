@@ -8,8 +8,8 @@ body_attr: >-
 
 {% assign blogs_by_year = site.posts | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
 
-<div class="row">
-    <div class="col-12 col-lg-10">
+<div class="row blog-index">
+    <div class="col-12 col-lg-9">
         <h1 class="page-title">Blog</h1>
         {% for year in blogs_by_year %}
         {% assign num_blogs = year.items | size %}
@@ -22,12 +22,30 @@ body_attr: >-
         {% endfor %}
     </div>
 
-    <div class="col-2 d-none d-lg-block">
-        <div id="navbar-year" class="nav nav-pills flex-column sticky-top" style="top: 80px">
-            {% for year in blogs_by_year %}
-            <a class="nav-link d-block px-0" href="#year-{{ year.name }}">{{ year.name }}</a>
-            {% endfor %}
+    <aside class="col-lg-3 d-none d-lg-block" aria-label="Artwork and blog archive">
+        <div class="blog-index-sidebar">
+            <figure class="blog-index-artwork">
+                <a class="blog-index-artwork-link"
+                   href="https://commons.wikimedia.org/wiki/File:Napol%C3%A9on_%C3%A0_Brienne.jpg"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="View Napoléon à Brienne on Wikimedia Commons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Napol%C3%A9on_%C3%A0_Brienne.jpg"
+                         width="775" height="1024"
+                         alt="Young Napoleon studying at his desk, his enormous shadow falling across a map of Europe"
+                         decoding="async" loading="lazy">
+                </a>
+                <figcaption>
+                    <span class="blog-index-artwork-title">Napoléon à Brienne</span>
+                    <span class="blog-index-artwork-credit">J.O.B. · c. 1910</span>
+                </figcaption>
+            </figure>
+            <nav id="navbar-year" class="nav nav-pills flex-column blog-index-archive" aria-label="Browse blog posts by year">
+                <span class="blog-index-archive-label">Archive</span>
+                {% for year in blogs_by_year %}
+                <a class="nav-link d-block px-0" href="#year-{{ year.name }}">{{ year.name }}</a>
+                {% endfor %}
+            </nav>
         </div>
-    </div>
+    </aside>
 
 </div>

@@ -310,3 +310,106 @@ body > .container-xl {
         font-size: 16px;
     }
 }
+
+/* ---------- Blog index artwork & archive (desktop only) ---------- */
+.blog-index-sidebar {
+    position: sticky;
+    top: calc(var(--site-nav-height) + 1.5rem);
+    padding-top: 3.5rem;
+    max-width: 250px;
+}
+
+.blog-index-artwork {
+    margin: 0 0 1.5rem;
+}
+
+.blog-index-artwork-link {
+    display: block;
+}
+
+.blog-index-artwork-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(67, 79, 88, 0.16);
+    border-radius: 3px;
+    box-shadow: 0 3px 12px rgba(12, 27, 37, 0.07);
+}
+
+.blog-index-artwork figcaption {
+    padding-top: 0.65rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    color: #7c8790;
+}
+
+.blog-index-artwork-title {
+    display: block;
+    font-style: italic;
+    color: #4f6371;
+}
+
+.blog-index-artwork-credit {
+    display: block;
+    letter-spacing: 0.015em;
+}
+
+.blog-index-archive {
+    border-top: 1px solid #e8ecf0;
+    padding-top: 1rem;
+}
+
+.blog-index-archive-label {
+    margin-bottom: 0.35rem;
+    color: #89949d;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.blog-index-archive .nav-link {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    color: #687b89;
+    font-size: 0.88rem;
+    background: transparent;
+}
+
+.blog-index-archive .nav-link:hover,
+.blog-index-archive .nav-link.active {
+    color: #004a6c;
+    background: transparent;
+    text-decoration: none;
+}
+
+.blog-index-archive .nav-link.active {
+    font-weight: 700;
+}
+
+[data-theme="dark"] .blog-index-artwork-link img {
+    border-color: #343b44;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .blog-index-artwork figcaption,
+[data-theme="dark"] .blog-index-artwork-title {
+    color: #aeb8c4;
+}
+
+[data-theme="dark"] .blog-index-archive {
+    border-top-color: #343b44;
+}
+
+[data-theme="dark"] .blog-index-archive-label {
+    color: #8f9ba7;
+}
+
+[data-theme="dark"] .blog-index-archive .nav-link {
+    color: #aeb8c4;
+}
+
+[data-theme="dark"] .blog-index-archive .nav-link:hover,
+[data-theme="dark"] .blog-index-archive .nav-link.active {
+    color: #e1e9f2;
+}
