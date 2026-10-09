@@ -413,3 +413,67 @@ body > .container-xl {
 [data-theme="dark"] .blog-index-archive .nav-link.active {
     color: #e1e9f2;
 }
+
+
+/* ---------- Homepage Hero: original zinc-finger structure as a soft watermark ---------- */
+/* Original image: DocCheck Flexikon (EGR1 zinc-finger domains). */
+/* Keep the source artwork intact: fading is achieved with CSS, not redrawing. */
+#header.home-hero-molecular {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+#header.home-hero-molecular::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    inset: 0 -1rem 0 25%;
+    background-image: url("https://dccdn.de/www.doccheck.com/data/9u/7r/an/5g/cc/vx/zinkfinger_doma_ne___egr1_2_md.jpg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    opacity: 0.14;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.22) 18%, #000 62%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.22) 18%, #000 62%);
+}
+
+#header.home-hero-molecular > .row {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-artwork-credit {
+    position: absolute;
+    z-index: 1;
+    right: 0.1rem;
+    bottom: 0.3rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.01em;
+    opacity: 0.55;
+}
+
+#header .hero-artwork-credit,
+#header .hero-artwork-credit:hover {
+    color: #6e7a84;
+}
+
+[data-theme="dark"] #header.home-hero-molecular::before {
+    opacity: 0.18;
+    filter: grayscale(0.6) invert(1);
+    mix-blend-mode: screen;
+}
+
+[data-theme="dark"] #header .hero-artwork-credit,
+[data-theme="dark"] #header .hero-artwork-credit:hover {
+    color: #acb8c2;
+}
+
+@media (max-width: 767.98px) {
+    #header.home-hero-molecular::before,
+    #header.home-hero-molecular .hero-artwork-credit {
+        display: none;
+    }
+}
